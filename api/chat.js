@@ -44,9 +44,9 @@ export default async function handler(req, res) {
   const thread =
     typeof threadId === "string" && threadId.startsWith("thread_")
       ? { id: threadId }
-      : await client.beta.threads.create();
+      : await client.threads.create();
 
-  await client.beta.threads.messages.create(thread.id, {
+  await client.threads.messages.create(thread.id, {
     role: "user",
     content: message.trim(),
   });
@@ -58,7 +58,7 @@ export default async function handler(req, res) {
 
   let sentThreadId = false;
 
-  const stream = client.beta.threads.runs.stream(thread.id, {
+  const stream = client.threads.runs.stream(thread.id, {
     assistant_id: process.env.ASSISTANT_ID,
   });
 
