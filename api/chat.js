@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 
-const ALLOWED_ORIGINS = ["https://docs.formulatrinity.ie", "127.0.0.1:8000"];
+const ALLOWED_ORIGINS = ["https://docs.formulatrinity.ie", "http://127.0.0.1:8000/"];
 
 export default async function handler(req, res) {
   const origin = req.headers.origin || "";
